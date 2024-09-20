@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/styles/store-style.css">
+    <script src="/JS/row_onclick.js" defer></script>
+    <title>Stores</title>
+</head>
+<body>
+    <div class="top_block">
+        <a class="btn" href="/store?id=0&isEdit=true">Добавить магазин</a>
+        <a class="btn" href="/">Все магазины</a>
+        <form class="search_form" action="/search" method="get">
+            <input class="store_search" type="search" name="search_input" placeholder="Поиск...">
+            <select class="selector" name="search_option">
+                <option value="Name">По названию</option>
+                <option value="Category">По категории</option>
+                <option value="Address">По адресу</option>
+            </select>
+            <button class="search_btn" type="submit">Поиск</button>
+        </form>
+    </div>
+    <div class="table_block">
+        <table class="stores_table" th:if="${!stores.isEmpty()}">
+            <tr class="stores_table_head">
+                <th>Название</th>
+                <th>Категория</th>
+                <th>Адрес</th>
+                <th>Телефон</th>
+                <th></th>
+            </tr>
+            <th:block th:each="store : ${stores}">
+                <tr class="row">
+                    <td class="row_id" th:text="${store.id}" hidden></td>
+                    <td class="clickable_cell" th:text="${store.name}"></td>
+                    <td class="clickable_cell" th:text="${store.category}"></td>
+                    <td class="clickable_cell" th:text="${store.address}"></td>
+                    <td class="clickable_cell" th:text="${store.phone_number}"></td>
+                    <td>
+                        <form th:action="@{'/delete?id=' + ${store.id}}" method="post">
+                            <button class="delete_btn" type="submit">&#10006;</button>
+                        </form>
+                    </td>
+                </tr>
+            </th:block>
+        </table>
+        <p class="not_found" th:unless="${!stores.isEmpty()}">Ничего не найдено!</p>
+    </div>
+</body>
+</html>

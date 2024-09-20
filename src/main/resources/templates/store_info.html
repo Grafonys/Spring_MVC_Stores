@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/store-info-style.css">
+    <title>Store Info</title>
+</head>
+<body th:object="${isEdit}">
+    <div class="home_btn_container">
+        <a class="home_btn" href="/">На главную</a>
+    </div>
+
+    <form class="store_form" action="/store/save" method="post" th:object="${store}">
+        <input type="text"
+               th:field="*{id}"
+               th:value="*{id}"
+               hidden
+               readonly
+        >
+
+        <div class="store_block">
+            <div class="info_container">
+                <p class="header">Название:</p>
+                <p class="info"
+                   th:if="${!isEdit}"
+                   th:text="${store.name}">
+                </p>
+                <input class="input"
+                       th:unless="${!isEdit}"
+                       type="text"
+                       th:field="*{name}"
+                       th:value="*{name}"
+                       required
+                >
+            </div>
+
+            <div class="info_container">
+                <p class="header">Категория:</p>
+                <p class="info"
+                   th:if="${!isEdit}"
+                   th:text="${store.category}">
+                </p>
+                <select class="select"
+                        name="category"
+                        th:unless="${!isEdit}"
+                        th:field="*{category}"
+                >
+                    <option class="select"
+                            th:each="validCategory : ${categories}"
+                            th:value="${validCategory}"
+                            th:text="${validCategory}"
+                            th:selected="${validCategory.equals(store.category)}"
+                    >
+                    </option>
+                </select>
+            </div>
+
+            <div class="info_container">
+                <p class="header">Адрес:</p>
+                <p class="info"
+                   th:if="${!isEdit}"
+                   th:text="${store.address}">
+                </p>
+                <input class="input"
+                       type="text"
+                       th:unless="${!isEdit}"
+                       th:field="*{address}"
+                       th:value="*{address}"
+                       required
+                >
+            </div>
+
+            <div class="info_container">
+                <p class="header">Телефон:</p>
+                <p class="info"
+                   th:if="${!isEdit}"
+                   th:text="${store.phone_number}">
+                </p>
+                <input class="input"
+                       type="tel"
+                       th:unless="${!isEdit}"
+                       th:field="*{phone_number}"
+                       th:value="*{phone_number}"
+                       required
+                >
+            </div>
+
+            <div class="info_container">
+                <p class="header">Email:</p>
+                <p class="info"
+                   th:if="${!isEdit}"
+                   th:text="${store.email}">
+                </p>
+                <input class="input"
+                       type="email"
+                       th:unless="${!isEdit}"
+                       th:field="*{email}"
+                       th:value="*{email}"
+                       required
+                >
+            </div>
+
+            <div class="info_container">
+                <p class="header">Вебсайт:</p>
+                <a class="info"
+                   th:if="${!isEdit}"
+                   th:href="@{${store.website}}"
+                   th:text="${store.website}">
+                </a>
+                <input class="input"
+                       type="url"
+                       th:unless="${!isEdit}"
+                       th:field="*{website}"
+                       th:value="*{website}"
+                       required
+                >
+            </div>
+
+            <div class="info_container">
+                <p class="header">Описание:</p>
+                <p class="info note"
+                   th:if="${!isEdit}"
+                   th:text="${store.note}">
+                </p>
+                <textarea class="textarea"
+                          th:unless="${!isEdit}"
+                          th:field="*{note}"
+                          th:value="*{note}"
+                          rows="10"
+                          cols="40"
+                          maxlength="400"
+                >
+                </textarea>
+            </div>
+
+        </div>
+
+        <button class="save_btn"
+                type="submit"
+                th:unless="${!isEdit}"
+        >
+            Сохранить
+        </button>
+
+        <a class="cancel_btn"
+           th:unless="${!isEdit}"
+           th:href="@{${store.id != null} ? '/store?id=' + ${store.id} : '/'}"
+        >
+            Отменить
+        </a>
+
+        <a class="edit_btn"
+           th:if="${!isEdit}"
+           th:href="@{'/store?id=' + ${store.id} + '&isEdit=true'}"
+        >
+            Редактировать
+        </a>
+    </form>
+</body>
+</html>

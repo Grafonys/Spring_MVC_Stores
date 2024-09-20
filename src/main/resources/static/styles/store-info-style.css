@@ -1,0 +1,115 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+body {
+    background-color: rgb(240, 240, 240);
+}
+
+.home_btn_container {
+    height: 70px;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.home_btn {
+    background-color: rgb(58, 58, 194);
+    color: rgb(240, 240, 240);
+    display: inline-block;
+    text-decoration: none;
+    margin: 0 auto;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.store_form {
+    margin-bottom: 50px;
+}
+
+.store_block {
+    align-items: flex-start;
+    margin-top: 100px;
+    margin-left: 40px;
+    margin-bottom: 20px;
+    padding: 20px 20px;
+    border-left: 2px solid black;
+}
+
+.info_container {
+    font-size: 18px;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 25px;
+}
+
+.header {
+    width: 150px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+.info {
+    max-width: 500px;
+    word-wrap: break-word;
+}
+
+.input, .select {
+    width: 300px;
+    height: 30px;
+    font-size: 18px;
+    padding-left: 5px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.note {
+    line-height: 2;
+}
+
+.textarea {
+    min-width: 500px;
+    max-width: 600px;
+    min-height: 400px;
+    max-height: 600px;
+    font-size: 18px;
+    padding-left: 5px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.save_btn {
+    background-color: green;
+    color: rgb(240, 240, 240);
+    display: inline-block;
+    cursor: pointer;
+    font-size: 18px;
+    text-decoration: none;
+    margin-left: 200px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+}
+
+.cancel_btn {
+    background-color: red;
+    color: rgb(240, 240, 240);
+    display: inline-block;
+    font-size: 18px;
+    text-decoration: none;
+    margin-left: 80px;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.edit_btn {
+    background-color: rgb(58, 58, 194);
+    color: rgb(240, 240, 240);
+    font-size: 18px;
+    text-decoration: none;
+    margin-left: 70px;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
